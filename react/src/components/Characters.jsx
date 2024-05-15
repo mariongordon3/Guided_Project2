@@ -27,18 +27,24 @@ const Characters = (props) => {
     }, []);
 
     return (
-        <section className="characterList">
-            {
-                characters.map((char) => (
-                    <div key={char.id}>
-                       <Link to='/characters/'{char.id}>
-                       {char.name}
-                        </Link>
-                      
-                    </div>
-                ))
-            }
-        </section>
+        <>
+            <h1>Star Wars Universe Lookup</h1>
+            <label htmlFor="searchString">Who you looking for? <span className="small">(Regular expressions are cool
+            here)</span></label>
+            <section className="characterList">
+                {
+                    characters.map((char) => (
+                        <div key={char.id}>
+                        <Link to={'/characters/'+char.id}>
+                        {char.name}
+                            </Link>
+                        
+                        </div>
+                    ))
+                }
+            </section>
+        </>
+        
     );
 };
 {/* <Link className="nav-link" to="/">
