@@ -37,8 +37,7 @@ const Characters = (props) => {
                         <div key={char.id}>
                         <Link to={'/characters/'+char.id}>
                         {char.name}
-                            </Link>
-                        
+                            </Link>   
                         </div>
                     ))
                 }
