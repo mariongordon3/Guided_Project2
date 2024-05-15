@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Link
+  } from "react-router-dom";
 
 const Characters = (props) => {
     const [characters, setCharacters] = useState([])
@@ -24,11 +30,18 @@ const Characters = (props) => {
         <section className="characterList">
             {
                 characters.map((char) => (
-                    <div key={char.id}>{(char.name)}</div>
+                    <div key={char.id}>
+                       <Link to='/characters/'{char.id}>
+                       {char.name}
+                        </Link>
+                      
+                    </div>
                 ))
             }
         </section>
     );
 };
-
+{/* <Link className="nav-link" to="/">
+                  Home
+              </Link> */}
 export default Characters
