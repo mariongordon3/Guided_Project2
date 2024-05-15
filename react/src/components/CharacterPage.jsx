@@ -19,15 +19,28 @@ export default function CharacterPage(props) {
                 }).then(async (character) => {
                     const planet_response = await fetch(`${import.meta.env.VITE_SWAPI_API_URL}/planets/${character.homeworld}`);
                     const planet_json = await planet_response.json();
-                    console.log(planet_json);
+                    // console.log(planet_json);
+                    // console.log(character)
                     setPlanet(planet_json)
                     return planet_json;
-                });
+                })
+            } catch (error) {
+                console.error('Error fetching character:', error);
+            }
+        };
+        const fetchFilms = async () => {
+            try {
+                await fetch(`${import.meta.env.VITE_SWAPI_API_URL}/characters/${characterId}/films`).then(async (response) => {
+                    const json_response = await response.json();
+                    console.log(json_response); // assign JSON response to the data variable.
+                    // return json_response;
+                })
             } catch (error) {
                 console.error('Error fetching character:', error);
             }
         };
         fetchData();
+        fetchFilms();
     }, []);
 
 
