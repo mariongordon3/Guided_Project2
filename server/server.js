@@ -61,7 +61,7 @@ app.get('/api/characters/:id', async (req, res) => {
         const client = await MongoClient.connect(url);
         const db = client.db(swapi_db);
         const char_coll = db.collection(characters_collection);
-        const character = await char_coll.find({"id": Number(id)}).toArray();
+        const character = await char_coll.findOne({"id": Number(id)});
         res.status(200).send(character);
     } catch (err) { 
         console.log('Error: ', err);
@@ -75,7 +75,7 @@ app.get('/api/films/:id', async (req, res) => {
     const client = await MongoClient.connect(url);
     const db = client.db(swapi_db);
     const films_coll = db.collection(films_collection);
-    const film = await films_coll.find({"id": Number(id)}).toArray();
+    const film = await films_coll.findOne({"id": Number(id)});
     res.status(200).send(film);
     } catch (err) { 
         console.log('Error: ', err);
@@ -89,7 +89,7 @@ app.get('/api/planets/:id', async (req, res) => {
         const client = await MongoClient.connect(url);
         const db = client.db(swapi_db);
         const planets_coll = db.collection(planets_collection);
-        const planet = await planets_coll.find({"id": Number(id)}).toArray();
+        const planet = await planets_coll.findOne({"id": Number(id)});
         res.status(200).send(planet);
     } catch (err) {
         console.log('Error: ', err);
